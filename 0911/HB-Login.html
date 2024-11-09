@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Autorización de acceso</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <style>
+    /* Hide content by default */
+    .mainContent {
+        display: none;
+    }
+    body {
+        background-color: aquamarine;
+    }
+  </style>
+
+</head>
+<body>
+
+    <script>
+    $(window).on('load', function() {
+        $('#dniModal').modal('show');
+        $('#dniModal').on('hidden.bs.modal', function (e) {
+            let [user, passwd] = getData();
+
+            if (user !== '28268716' && (passwd !== "09/11" || passwd !== "9/11")) { //Change to !==
+              alert('Este contenido no está disponible para usuarios no autorizados, usted será redireccionado a la página principal del sitio web.');
+              window.location.href = 'HB-Login.html';
+            } else {
+              //CHANGE TO BLOCK WHICH I'LL BE USING
+              document.getElementById('mainContent').style.display = 'block';
+              window.location.href = 'HB-Rosalinda.html';
+            }
+        });
+    });
+
+    function getData() {
+        let user = document.getElementById("usrname").value;
+        let passwd = document.getElementById("passwd").value;
+        return [user, passwd];
+    }
+    </script>
+
+  <div class="mainContent" id="mainContent">
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="dniModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">¡Identifiquese!</h5>
+        </div>
+        <div class="modal-body">
+          <p>El contenido de este sitio web está restringido únicamente para ser accesible por usuarios autorizados. Por favor, ingrese sus credenciales: </p>
+          <label for="usrname"><span class="glyphicon glyphicon-user"></span> Cédula</label>
+          <input type="text" class="form-control" id="usrname" placeholder="Ingrese su número de identificación">
+          <label for="passwd"><span class="glyphicon glyphicon-user"></span> Fecha de cumpleaños (dia/mes)</label>
+          <input type="text" class="form-control" id="passwd" placeholder="Ingrese su fecha de cumpleaños">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
