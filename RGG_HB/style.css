@@ -632,6 +632,29 @@ body {
 
 @media screen and (max-width: 658px)   {
 
+    /* Ajustes para las flores decorativas en el móvil */
+    .decorate_flower--one {
+        /* Nueva posición: Esquina superior izquierda, lejos de la bandera */
+        top: 10px;
+        left: 10px;
+        /* Reducimos un poco el tamaño si es necesario, ya que en la versión desktop está en el HTML (width="20") */
+        transform: scale(0.8);
+    }
+
+    .decorate_flower--two {
+        /* Nueva posición: En el centro, debajo del título "Cumpleaños" */
+        top: 350px; 
+        left: 80%;
+        transform: translateX(-50%) scale(0.8); /* Centrar horizontalmente */
+    }
+
+    .decorate_flower--three {
+        /* Nueva posición: Cerca del icono de la carta/botón */
+        top: 600px; 
+        right: 280px;
+        transform: scale(0.8);
+    }
+
     .flag__birthday .flag__left {
         transform: rotate(-10deg) translate(-119px,3px);
     }
@@ -781,6 +804,7 @@ body {
 
     .name span {
         font-size: 1rem;
+        white-space: nowrap;
     }
 
     .right .balloon_one {
